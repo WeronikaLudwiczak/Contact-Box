@@ -18,7 +18,8 @@ use weronika\Bundle\ContactBoxBundle\Form\UserType;
 class UserController extends Controller
 {
 
-    /**
+
+        /**
      * Lists all User entities.
      *
      * @Route("/", name="user")
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('weronikaContactBoxBundle:User')->findAll();
+        $entities = $em->getRepository('weronikaContactBoxBundle:User')->findBy(array(), array('lastName'=> 'ASC'));
 
         return array(
             'entities' => $entities,

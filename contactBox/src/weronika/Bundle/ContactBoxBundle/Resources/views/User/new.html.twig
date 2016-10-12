@@ -1,15 +1,58 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>User creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
+<ul class="pager">
+    <li class="previous disabled"><a href="{{ path('user') }}">&larr; Back to the list</a></li>
 </ul>
+<legend class="well"><center>User Creation</center></legend>
+<div class = 'form-group'>
+    <div>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="col-lg-10">
+            {{ form_label(form.firstName, 'First name: ') }}
+            {{ form_errors(form.firstName) }}
+            {{ form_widget(form.firstName, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(form.lastName, 'Last name: ') }}
+            {{ form_errors(form.lastName) }}
+            {{ form_widget(form.lastName, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(form.description, 'Description: ') }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(form.address, 'Address: ') }}
+            {{ form_errors(form.address) }}
+            {{ form_widget(form.address, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+
+
+
+        <div class="col-lg-10">
+        {% block submit %}
+        {{ form_widget(form.submit, { 'label': 'Create new User', 'attr': {'class':'btn btn-success'} }) }}
+        {% endblock %}
+        </div>
+        <br>
+
+
+        {{ form_end(form) }}
+
+
+
 {% endblock %}
+
+
