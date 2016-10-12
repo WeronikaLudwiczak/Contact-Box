@@ -1,0 +1,6 @@
+weronika_contact_box:
+    resource: "@weronikaContactBoxBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+

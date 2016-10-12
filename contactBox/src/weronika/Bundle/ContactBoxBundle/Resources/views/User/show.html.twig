@@ -1,0 +1,77 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>User</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ entity.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Emails:</th>
+                <td>
+                    {%for email in entity.emails%}
+                        <ul>
+                            <li>
+                                {{email.emailAddress}} <a href="{{ path('email_edit', { 'id':email.id }) }}">Edit</a>
+                            </li>
+                        </ul>
+                    {%endfor%}
+                </td>
+            </tr>
+            <tr>
+                <th>Telephones:</th>
+                <td>
+                    {%for phone in entity.phones%}
+                        <ul> <li> {{phone.phoneNumber}} <a href="{{ path('phone_edit', { 'id':phone.id }) }}">Edit</a>
+                            </li>
+                        </ul>
+                    {%endfor%}
+                </td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>
+                    {% if entity.address is null %}
+                        No address
+                    {% else %}
+                        <ul> <li> {{entity.address.city}} {{entity.address.street}}
+                                {{entity.address.houseNumber}} {{entity.address.flatNumber}}
+                                <a href="{{ path('_edit', { 'id':entity.id }) }}">Change</a>
+                            </li>
+
+                        </ul>
+                    {%endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('user') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('user_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
