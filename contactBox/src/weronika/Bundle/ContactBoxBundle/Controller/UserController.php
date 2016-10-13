@@ -13,7 +13,7 @@ use weronika\Bundle\ContactBoxBundle\Form\UserType;
 /**
  * User controller.
  *
- * @Route("/user")
+ * @Route("/")
  */
 class UserController extends Controller
 {

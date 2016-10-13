@@ -193,7 +193,7 @@ class EmailController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('email_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('email_show', array('id' => $id)));
         }
 
         return array(
