@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h2 class= "well" ><center>Contact Box</center></h2>
+{% block body %}
+
+{% include('weronikaContactBoxBundle::menu.html.twig') %}
+    <h2 class= "well" ><center>User list</center></h2>
 
     <table class="table table-striped table-hover ">
         <thead>
@@ -27,6 +29,7 @@
 
 
                         <a href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-info btn-sm">edit</a>
+
                         <a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Are you sure do you want to delet {{ entity.firstName }}  {{ entity.lastName }} ?') "class="btn btn-warning btn-sm">Delete</a>
 
 
@@ -45,35 +48,3 @@
     </ul>
     {% endblock %}
 
-{#{% extends "weronikaContactBoxBundle::base.html.twig" %}#}
-
-
-{#{% block body %}#}
-    {#<h2 class= "well" ><center>Contact Box</center></h2>#}
-    {#<br>#}
-    {#<table class="table table-striped table-hover ">#}
-        {#<thead>#}
-        {#<tr>#}
-
-            {#<th>User Id</th>#}
-            {#<th>First Name</th>#}
-            {#<th>Last Name</th>#}
-            {#<th>Description</th>#}
-
-        {#</tr>#}
-        {#<tbody>#}
-        {#{% for user in users %}#}
-            {#<tr>#}
-
-                {#<td>{{ user.id }}</td>#}
-                {#<td>{{ user.firstName }}</td>#}
-                {#<td>{{ user.lastName }}</td>#}
-                {#<td>{{ user.description }}</td>#}
-                {#<td><a href="{{ path('updatePOST', {'id': user.id}) }}"  class="btn btn-primary btn-sm">Edit</a></td>#}
-                {#<td><a href="{{ path('deleteUser', {'id': user.id}) }}" onclick="return confirm('Are you sure do you want to delet {{ user.firstName }}{{ user.lastName }}?')" class="btn btn-info btn-sm">Delete</a></td>#}
-            {#</tr>#}
-
-        {#{% endfor %}#}
-        {#</tbody>#}
-    {#</table>#}
-{#{% endblock %}#}

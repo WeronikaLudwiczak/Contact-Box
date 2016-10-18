@@ -1,55 +1,55 @@
-{% extends '::base.html.twig' %}
+{#{% extends '::base.html.twig' %}#}
 
 
-    {% block body -%}
-<ul class="pager">
-    <li class="previous disabled"><a href="javascript:history.go(-1)">&larr; Back to the User</a></li>
-</ul>
+    {#{% block body -%}#}
+{#<ul class="pager">#}
+    {#<li class="previous disabled"><a href="javascript:history.go(-1)">&larr; Back to the User</a></li>#}
+{#</ul>#}
 
-<legend class="well"><center>Edit Phone Number</center></legend>
-<div class = 'form-group'>
-    <div>
-        {{ form_start(edit_form) }}
-        {{ form_errors(edit_form) }}
-        <div class="col-lg-10">
-            {{ form_label(edit_form.phoneNumber, 'Phone Number: ') }}
-            {{ form_errors(edit_form.phoneNumber) }}
-            {{ form_widget(edit_form.phoneNumber, { 'attr': {'class': 'form-control'} }) }}
-            <br>
-        </div>
+{#<legend class="well"><center>Edit Phone Number</center></legend>#}
+{#<div class = 'form-group'>#}
+    {#<div>#}
+        {#{{ form_start(edit_form) }}#}
+        {#{{ form_errors(edit_form) }}#}
+        {#<div class="col-lg-10">#}
+            {#{{ form_label(edit_form.phoneNumber, 'Phone Number: ') }}#}
+            {#{{ form_errors(edit_form.phoneNumber) }}#}
+            {#{{ form_widget(edit_form.phoneNumber, { 'attr': {'class': 'form-control'} }) }}#}
+            {#<br>#}
+        {#</div>#}
 
-        <br>
-        <div class="col-lg-10">
-            {{ form_label(edit_form.phoneType, 'Phone Type: ') }}
-            {{ form_errors(edit_form.phoneType) }}
-            {{ form_widget(edit_form.phoneType, { 'attr': {'class': 'form-control'} }) }}
-            <br>
-        </div>
+        {#<br>#}
+        {#<div class="col-lg-10">#}
+            {#{{ form_label(edit_form.phoneType, 'Phone Type: ') }}#}
+            {#{{ form_errors(edit_form.phoneType) }}#}
+            {#{{ form_widget(edit_form.phoneType, { 'attr': {'class': 'form-control'} }) }}#}
+            {#<br>#}
+        {#</div>#}
 
-        <br>
-        <div class="col-lg-10">
-            {{ form_label(edit_form.user, 'User: ') }}
-            {{ form_errors(edit_form.user) }}
-            {{ form_widget(edit_form.user, { 'attr': {'class': 'form-control'} }) }}
-            <br>
-        </div>
-        <br>
-        <div class="col-lg-10">
-            {% block submit %}
-                {{ form_widget(edit_form.submit, { 'label': 'Update', 'attr': {'class':'btn btn-success btin-sm'} }) }}
-            {% endblock %}
-        </div>
+        {#<br>#}
+        {#<div class="col-lg-10">#}
+            {#{{ form_label(edit_form.user, 'User: ') }}#}
+            {#{{ form_errors(edit_form.user) }}#}
+            {#{{ form_widget(edit_form.user, { 'attr': {'class': 'form-control'} }) }}#}
+            {#<br>#}
+        {#</div>#}
+        {#<br>#}
+        {#<div class="col-lg-10">#}
+            {#{% block submit %}#}
+                {#{{ form_widget(edit_form.submit, { 'label': 'Update', 'attr': {'class':'btn btn-success btin-sm'} }) }}#}
+            {#{% endblock %}#}
+        {#</div>#}
 
-        {{ form_end(edit_form) }}
-        <div class="col-lg-10">
-            <h1></h1>
-            {% block delete %}
-                {{ form_start(delete_form) }}
-                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'} }) }}
-                {{ form_end(delete_form) }}
-            {% endblock %}
-        </div>
-        {% endblock %}
+        {#{{ form_end(edit_form) }}#}
+        {#<div class="col-lg-10">#}
+            {#<h1></h1>#}
+            {#{% block delete %}#}
+                {#{{ form_start(delete_form) }}#}
+                {#{{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'} }) }}#}
+                {#{{ form_end(delete_form) }}#}
+            {#{% endblock %}#}
+        {#</div>#}
+        {#{% endblock %}#}
 
 
 

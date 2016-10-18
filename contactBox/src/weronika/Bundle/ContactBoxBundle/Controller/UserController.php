@@ -19,7 +19,7 @@ class UserController extends Controller
 {
 
 
-        /**
+    /**
      * Lists all User entities.
      *
      * @Route("/", name="user")
@@ -153,12 +153,12 @@ class UserController extends Controller
     }
 
     /**
-    * Creates a form to edit a User entity.
-    *
-    * @param User $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a User entity.
+     *
+     * @param User $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
@@ -170,6 +170,7 @@ class UserController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing User entity.
      *
@@ -203,31 +204,31 @@ class UserController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-    /**
-     * Deletes a User entity.
-     *
-     * @Route("/{id}", name="user_delete")
-     * @Method("DELETE")
-     */
+
+         /**
+         * Deletes a User entity.
+         *
+         * @Route("/{id}", name="user_delete")
+         * @Method("DELETE")
+         */
     public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+     {
+         $form = $this->createDeleteForm($id);
+         $form->handleRequest($request);
+          if ($form->isValid()) {
+             $em = $this->getDoctrine()->getManager();
+             $entity = $em->getRepository('weronikaContactBoxBundle:User')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('weronikaContactBoxBundle:User')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find User entity.');
-            }
-
+             if (!$entity) {
+                 throw $this->createNotFoundException('Unable to find User entity.');
+             }
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('user'));
-    }
+         return  $this->redirect($this->generateUrl('user'));
+
+     }
 
     /**
      * Creates a form to delete a User entity by id.
@@ -243,6 +244,8 @@ class UserController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
-        ;
+            ;
     }
+
+
 }

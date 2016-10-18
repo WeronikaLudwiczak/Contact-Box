@@ -1,0 +1,18 @@
+
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Contact Box</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="{{ path('user') }}">Home</a></li>
+            <li><a href="{{ path('email')}}">Emails</a></li>
+            <li><a href="{{ path('phone')}}">Phones</a></li>
+            <li><a href="{{ path('address')}}">Addresses</a></li>
+        </ul>
+    </div>
+</nav>
+{% endblock %}
