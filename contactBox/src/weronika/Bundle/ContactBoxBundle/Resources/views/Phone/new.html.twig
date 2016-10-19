@@ -1,15 +1,46 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Phone creation</h1>
+    <ul class="pager">
+        <li class="previous disabled"><a href="javascript:history.go(-1)">&larr; previous page</a></li>
+    </ul>
+    <legend class="well"><center>New Phone Number</center></legend>
+    <div class = 'form-group'>
+    <div>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="col-lg-10">
+        {{ form_label(form.phoneNumber, 'Phone Number: ') }}
+        {{ form_errors(form.phoneNumber) }}
+        {{ form_widget(form.phoneNumber, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    </div>
 
-    {{ form(form) }}
+    <br>
+    <div class="col-lg-10">
+        {{ form_label(form.phoneType, 'Phone Type: ') }}
+        {{ form_errors(form.phoneType) }}
+        {{ form_widget(form.phoneType, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('phone') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <br>
+    <div class="col-lg-10">
+        {{ form_label(form.user, 'User: ') }}
+        {{ form_errors(form.user) }}
+        {{ form_widget(form.user, { 'attr': {'class': 'form-control'} }) }}
+        <br>
+    </div>
+
+    <div class="col-lg-10">
+        {% block submit %}
+            {{ form_widget(form.submit, { 'label': 'Create new Email', 'attr': {'class':'btn btn-success'} }) }}
+        {% endblock %}
+    </div>
+    <br>
+
+    {{ form_end(form) }}
+
+
+
 {% endblock %}

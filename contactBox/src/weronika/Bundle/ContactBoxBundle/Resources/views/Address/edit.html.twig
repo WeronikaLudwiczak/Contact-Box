@@ -1,16 +1,59 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Address edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('address') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+<ul class="pager">
+    <li class="previous disabled"><a href="javascript:history.go(-1)">&larr; previous page</a></li>
 </ul>
-{% endblock %}
+
+<legend class="well"><center>Edit Address</center></legend>
+<div class = 'form-group'>
+    <div>
+        {{ form_start(edit_form) }}
+        {{ form_errors(edit_form) }}
+        <div class="col-lg-10">
+            {{ form_label(edit_form.city, 'City: ') }}
+            {{ form_errors(edit_form.city) }}
+            {{ form_widget(edit_form.city, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(edit_form.street, 'Street: ') }}
+            {{ form_errors(edit_form.street) }}
+            {{ form_widget(edit_form.street, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(edit_form.houseNumber, 'House Number: ') }}
+            {{ form_errors(edit_form.houseNumber) }}
+            {{ form_widget(edit_form.houseNumber, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+        <br>
+        <div class="col-lg-10">
+            {{ form_label(edit_form.flatNumber, 'Flat Number: ') }}
+            {{ form_errors(edit_form.flatNumber) }}
+            {{ form_widget(edit_form.flatNumber, { 'attr': {'class': 'form-control'} }) }}
+            <br>
+        </div>
+        <br>
+        <div class="col-lg-10">
+            {% block submit %}
+                {{ form_widget(edit_form.submit, { 'label': 'Update', 'attr': {'class':'btn btn-success btin-sm'} }) }}
+            {% endblock %}
+        </div>
+
+        {{ form_end(edit_form) }}
+        <div class="col-lg-10">
+            <h1></h1>
+            {% block delete %}
+                {{ form_start(delete_form) }}
+                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'} }) }}
+                {{ form_end(delete_form) }}
+            {% endblock %}
+        </div>
+        {% endblock %}
+

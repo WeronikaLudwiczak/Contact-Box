@@ -1,46 +1,52 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Phone list</h1>
+    {% include('weronikaContactBoxBundle::menu.html.twig') %}
+    <h2 class= "well" ><center>Phones </center></h2>
 
-    <table class="records_list">
+    <table class="table table-striped table-hover ">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Phonenumber</th>
-                <th>Phonetype</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Phone Number</th>
+            <th>Phone Type</th>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('phone_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.phoneNumber }}</td>
                 <td>{{ entity.phoneType }}</td>
+                <td>{{ entity.user }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('phone_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('phone_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('phone_delete', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+
+
+                    <a href="{{ path('phone_show', { 'id': entity.id }) }}" class="btn btn-primary btn-sm">show</a>
+
+
+                    <a href="{{ path('phone_edit', { 'id': entity.id }) }}" class="btn btn-info btn-sm">edit</a>
+
+
+
+                    <a href="{{ path('phone_delete', { 'id': entity.id }) }}" onclick="return confirm('Are you sure do you want to delet phone number:{{ entity.phoneNumber }} ?') "class="btn btn-warning btn-sm">Delete</a>
+
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('phone_new') }}">
-                Create a new entry
-            </a>
-        </li>
+    <ul>
+
+        <a href="{{ path('phone_new') }}">
+            Create a new Phone Number
+        </a>
+
     </ul>
-    {% endblock %}
+{% endblock %}
+
+

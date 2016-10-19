@@ -1,36 +1,42 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Phone</h1>
+    <ul class="pager">
+        <li class="previous disabled"><a href="javascript:history.go(-1)">&larr; previous page</a></li>
+    </ul>
+    <legend class="well"><center>Phone Details</center></legend>
 
-    <table class="record_properties">
+    <table class="table table-striped table-hover">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Phonenumber</th>
+                <th>Phone number</th>
                 <td>{{ entity.phoneNumber }}</td>
             </tr>
             <tr>
-                <th>Phonetype</th>
+                <th>Phone type</th>
                 <td>{{ entity.phoneType }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('phone') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('phone_edit', { 'id': entity.id }) }}">
+    <div class="col-lg-10">
+        <a href="{{ path('user_edit', { 'id': entity.id }) }}" class ="btn btn-danger btn-sm">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <h1></h1>
+        {% block delete %}
+            {{ form_start(delete_form) }}
+            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-success btin-sm'} }) }}
+            {{ form_end(delete_form) }}
+        {% endblock %}
+    </div>
+
 {% endblock %}
